@@ -25,12 +25,10 @@ ActiveRecord::Schema.define(version: 2020_05_15_171142) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
     t.bigint "classroom_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["classroom_id"], name: "index_students_on_classroom_id"
-    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,5 +45,4 @@ ActiveRecord::Schema.define(version: 2020_05_15_171142) do
 
   add_foreign_key "classrooms", "users"
   add_foreign_key "students", "classrooms"
-  add_foreign_key "students", "users"
 end
