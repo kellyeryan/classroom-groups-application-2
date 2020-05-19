@@ -1,33 +1,51 @@
+require "byebug"
+
 class ClassroomsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @classrooms = Classroom.all
   end
+
   def show
-    if authorized?
-      @classroom=Classroom.find(params[:id])
-      render :show
-    end
+      @classroom = Classroom.find(params[:id])
   end
+  
   def create
-    @classroom = current_user.classrooms.build(classroom_params)
+    @user = current_user
+    @classroom = @user.classrooms.build(classroom_params)
     if @classroom.save
-      format.json { render :show, status: :created, location: classroom_path(@classroom) }
+      redirect_to classrooms_path
     else
       return
     end
   end
+
+  def new
+  end
+  
   def update
+    @classroom = Classroom.find(params[:id])
+    if @classroom.update(classroom_params)
+      redirect_to classrooms_path
+    else
+      redirect_to classrooms_path
+    end
   end
+
   def destroy
+    @classroom = Classroom.find(params[:id])
+    @classroom.destroy
+    redirect_to classrooms_path
   end
+
 private
 
   def classroom_params
     params.require(:classroom).permit(:subject_name)
   end
 
-  def authorized?
-    @classroom.user == current_user
-  end
+  # def authorized?
+  #   @classroom.user == current_user
+  # end
 end

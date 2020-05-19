@@ -1,0 +1,5 @@
+<%= form_with(model: @classroom) do |f| %>
+  <%= f.label :class_name%>
+  <%= f.text_field :subject_name, id: "subject_name" %>
+  <%= f.submit :Edit %>
+<% end %>
