@@ -1,5 +1,3 @@
-require "byebug"
-
 class ClassroomsController < ApplicationController
   before_action :authenticate_user!
 
@@ -9,6 +7,7 @@ class ClassroomsController < ApplicationController
 
   def show
     @classroom = Classroom.find(params[:id])
+    @students = @classroom.students
   end
   
   def edit

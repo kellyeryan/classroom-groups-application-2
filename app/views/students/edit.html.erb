@@ -1,0 +1,9 @@
+<%= form_with model: [ @classroom, @classroom.students.build ] do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name,  class: "form-control", placeholder: "Add a student" %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
