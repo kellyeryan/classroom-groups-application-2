@@ -1,1 +1,19 @@
-<%= @classroom.subject_name %>
+<h2><%= @classroom.subject_name %> Students</h2>
+
+<br>
+<%= form_with model: [ @classroom, @classroom.students.build ] do |form| %>
+  <p>
+    <%= form.label :name, placeholder: "Add a student" %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<br>
+
+<%= @classroom.students.each do |student| %>
+  <%= student.name %>
+  <br>
+<% end %>
