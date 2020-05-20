@@ -1,8 +1,1 @@
-<div id="new-class-form">
-Add a Class:
-<%= form_with scope: :classroom, url: classrooms_path do |f| %>
-  <%= f.text_field :subject_name, id: "subject_name", placeholder: "Add a new class" %>
-  <%= f.submit :Add %>
-<% end %>
-
-</div>
+<% render 'form' %>

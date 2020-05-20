@@ -8,9 +8,13 @@ class ClassroomsController < ApplicationController
   end
 
   def show
-      @classroom = Classroom.find(params[:id])
+    @classroom = Classroom.find(params[:id])
   end
   
+  def edit
+    @classroom = Classroom.find(params[:id])
+  end
+
   def create
     @user = current_user
     @classroom = @user.classrooms.build(classroom_params)
