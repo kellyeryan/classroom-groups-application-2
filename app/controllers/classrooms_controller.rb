@@ -8,6 +8,7 @@ class ClassroomsController < ApplicationController
   def show
     @classroom = Classroom.find(params[:id])
     @students = @classroom.students
+    @student = @classroom.students.new
   end
   
   def edit
@@ -45,7 +46,7 @@ class ClassroomsController < ApplicationController
 private
 
   def classroom_params
-    params.require(:classroom).permit(:subject_name)
+    params.require(:classroom).permit(:subject_name, student_attributes:[:id, :name])
   end
 
   # def authorized?

@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
 
   def update
     @classroom = Classroom.find(params[:classroom_id])
-    @student = @classroom.students.find(params[:id])
+    @student = Student.find(params[:id])
     if @classroom.students.update(student_params)
       redirect_to classroom_path(@classroom)
     end
