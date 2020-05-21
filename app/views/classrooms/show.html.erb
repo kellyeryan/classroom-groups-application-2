@@ -16,11 +16,11 @@
       <th>Name</th>
       <th>Actions</th>
     </tr>
-    <tr>
-      <% @students.each do |student| %>
-      <td><%= student.name %></td>
-      <td><%= link_to "Edit Student Name", "/classrooms/#{@classroom.id}/students/#{student.id}/edit" %></td>
-    </tr>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= link_to "Edit Student Name", "/classrooms/#{@classroom.id}/students/#{student.id}/edit" %></td>
+      </tr>
     <% end %>
   </table>
 </div>
