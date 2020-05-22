@@ -7,3 +7,8 @@
       <%= form.submit %>
     </p>
 <% end %>
+
+<%= form_with model: @classroom do |form| %>
+  <%= form.label :students %>
+  <%= form.collection_check_boxes(:student_ids, @classroom.students.all, :id, :name) %>
+<% end %>

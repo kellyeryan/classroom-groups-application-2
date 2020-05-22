@@ -19,7 +19,7 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= student.name %></td>
-        <td><%= link_to "Edit Student Name", "/classrooms/#{@classroom.id}/students/#{student.id}/edit" %></td>
+        <td><%= link_to "Edit Student", "/classrooms/#{@classroom.id}/students/#{student.id}/edit" %></td>
         <td><%= link_to "Delete Student", "/classrooms/#{@classroom.id}/students/#{student.id}", method: :delete %></td>
       </tr>
     <% end %>
