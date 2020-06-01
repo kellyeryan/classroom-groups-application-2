@@ -11,6 +11,21 @@
     </p>
   <% end %>
 <br>
+
+Create Groups
+
+How many students per group?
+
+  <%= form_with model: @classroom do |form| %>
+    <%= form.number_field :group_size, id:'group_size' %>
+    <%= form.submit %>
+  <% end %>
+  <br>
+
+  <%= create_groups_of_students %>
+  
+  <br>
+  
   <table class="table table-hover">
     <tr>  
       <th>Name</th>

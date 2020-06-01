@@ -1,5 +1,6 @@
 class ClassroomsController < ApplicationController
   before_action :authenticate_user!
+  helper_method :create_groups_of_students
 
   def index
     @classrooms = Classroom.all
@@ -30,8 +31,9 @@ class ClassroomsController < ApplicationController
   
   def update
     @classroom = Classroom.find(params[:id])
+    students = @classroom.students
     if @classroom.update(classroom_params)
-      redirect_to classrooms_path
+      redirect_to classroom_path(@classroom)
     else
       redirect_to classrooms_path
     end
@@ -43,10 +45,18 @@ class ClassroomsController < ApplicationController
     redirect_to classrooms_path
   end
 
+  def create_groups_of_students
+    @classroom = Classroom.find(params[:id])
+    student_array = @classroom.students.map { |student| student.name }
+    new_array = student_array.shuffle.in_groups_of(@classroom.group_size)
+    byebug
+    new_array
+  end
+
 private
 
   def classroom_params
-    params.require(:classroom).permit(:subject_name, student_attributes:[:id, :name])
+    params.require(:classroom).permit(:subject_name, :group_size, student_attributes:[:id, :name])
   end
 
   # def authorized?
