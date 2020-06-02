@@ -48,8 +48,7 @@ class ClassroomsController < ApplicationController
   def create_groups_of_students
     @classroom = Classroom.find(params[:id])
     student_array = @classroom.students.map { |student| student.name }
-    new_array = student_array.shuffle.in_groups_of(@classroom.group_size)
-    byebug
+    new_array = student_array.shuffle.in_groups_of(@classroom.group_size, false)
     new_array
   end
 

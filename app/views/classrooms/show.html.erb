@@ -20,12 +20,15 @@ How many students per group?
     <%= form.number_field :group_size, id:'group_size' %>
     <%= form.submit %>
   <% end %>
-  <br>
 
-  <%= create_groups_of_students %>
-  
   <br>
-  
+  <% create_groups_of_students.each_with_index do |s_array, index| %>
+    <%= "Group #{index + 1}. #{s_array.join(', ')}" %>
+    <br>
+    <br>
+  <% end %>
+
+
   <table class="table table-hover">
     <tr>  
       <th>Name</th>
